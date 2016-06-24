@@ -1,0 +1,56 @@
+﻿@model MVC.Models.Shared.QuestionViewModel
+
+@using (Ajax.BeginForm("", "Client", new AjaxOptions { UpdateTargetId = "questionDiv"}))
+{
+    if (Model != null)
+    {
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="TestId" value="@Model.TestId" />
+        @Html.HiddenFor(x => Model.QuestionText)
+
+        if (Model.Id != 0)
+        {
+            <div class="text-center row">
+                @if (Model.Image != null)
+                {
+                    @Html.Raw("<img style='width:340px; height:270px;' src=\"data:image/jpeg;base64,"
+                + Convert.ToBase64String(Model.Image) + "\" />")
+                }
+            </div>
+            <br />
+            <div class="text-center jumbotron">
+                <h3>
+                    @Html.DisplayFor(m => m.QuestionText, new { @class = "form-control" })
+                </h3>
+                @if (Model.NewAnswers != null)
+                {
+                    <div class="col-lg-offset-0">
+                        @Html.DropDownListFor(m => m.AnswerId, Model.NewAnswers, new { @class = "form-control" })
+                    </div>
+                }
+            </div>  
+            <br />
+            <div class="row">
+                @if (Model.PrevQuestionId != 0)
+                {
+                    <div class="col-lg-offset-4 col-lg-1">
+                        <input type="submit" value="Prev" name="action:GetPrevQuestion" class="btn btn-primary"/>
+                        <input type="hidden" name="PrevQuestionId" value="@Model.PrevQuestionId" />
+                    </div>
+                }
+                <div class="col-lg-offset-2 col-lg-1">
+                    <input type="submit" value="Next" name="action:GetNextQuestion" class="btn btn-primary" />           
+                    <input type="hidden" name="NextQuestionId" value="@Model.NextQuestionId" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <h2>Test ended. Click the "Pass" button to save results</h2>
+        }
+    }
+    else
+    {
+        <h2>Test is absent today</h2>
+    }
+}

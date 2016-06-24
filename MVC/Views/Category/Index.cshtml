@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MVC.Models.Shared.CategoryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All categories</h2>
+
+@Html.ActionLink("Create", "Create")
+
+<br/>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.Label("Edit")
+            </th>
+            <th>
+                @Html.Label("Delete")
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+

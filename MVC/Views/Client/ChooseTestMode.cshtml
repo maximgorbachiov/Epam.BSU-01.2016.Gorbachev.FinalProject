@@ -1,0 +1,20 @@
+﻿@using MVC.Models.Shared
+@model TestViewModel
+
+@{
+    ViewBag.Title = "ChooseTestMode";
+}
+
+<h2>Choose test mode</h2>
+
+<div>
+    @Html.ActionLink("Pass test in on time mode", "PassOnTime", new { id = Model.Id })
+</div>
+<div>
+    @Html.ActionLink("Pass test in usual mode", "PassUsual", new { id = Model.Id })
+</div>
+<div>
+    @Html.ActionLink("Back", "ChooseBack")
+</div>
+
+

@@ -1,0 +1,86 @@
+﻿@using MVC.Helpers
+@using MVC.Models.Pagging
+@model  PageViewModel
+
+@{
+    ViewBag.Title = "IndexUser";
+}
+
+<h2>Statistic</h2>
+
+<div class="row">
+    @using (Html.BeginForm("SearchByName", "Client", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(m => Model.SearchingToken, new { @class = "col-md-2 control-label" })
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.SearchingToken, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-lg-2">
+        <h2>Categories</h2>
+        <br />
+        @{ Html.RenderAction("GetCategories", "Client"); }
+    </div>
+    <div class="col-lg-10">
+        <h2>Passed tests</h2>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                @if (Model != null)
+                {
+                    if (Model.PassedTests != null)
+                    {
+                        foreach (var passedTest in Model.PassedTests)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(passedTest.TestName, "ChooseTestMode", new { testId = passedTest.TestId })
+                                </td>
+                                <td>
+                                    @Html.Label(passedTest.CountOfRightResults.ToString() + " / " + passedTest.CountOfQuestions)
+                                </td>
+                                <td>
+                                    @if (passedTest.TimeToPass != null)
+                                    {
+                                        @Html.DisplayFor(m => passedTest.TimeToPass, new { @class = "col-md-2 control-label" });
+                                    }
+                                </td>
+                                <td>
+                                    @if (passedTest.DateOfPass != null)
+                                    {
+                                        @Html.DisplayFor(m => passedTest.DateOfPass, new { @class = "col-md-2 control-label" });
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("See all passed tests", "ViewStatistic", "Client")
+</p>
+<p>
+    @Html.ActionLink("Back", "Index", "Client")
+</p>
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("ViewStatistic", new { pageNumber = x }))
+</div>
+
+

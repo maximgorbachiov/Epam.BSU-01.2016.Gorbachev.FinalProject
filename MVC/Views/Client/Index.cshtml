@@ -1,0 +1,71 @@
+﻿@using MVC.Helpers
+@using MVC.Models.Pagging
+@model  PageViewModel
+
+@{
+    ViewBag.Title = "IndexUser";
+}
+
+<h2>User home page</h2>
+
+<div class="row">
+    @using (Html.BeginForm("SearchByName", "Client", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(m => Model.SearchingToken, new { @class = "col-md-2 control-label" })
+
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => Model.SearchingToken, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+<div class="row">
+    @if (Model != null)
+    {
+        if (Model.PageContent != null)
+        {
+            <div class="col-lg-2">
+                <h2>Categories</h2>
+                <br />
+                @{ Html.RenderAction("GetCategories", "Client"); }
+            </div>
+            <div class="col-lg-10">
+                <h2>Tests</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        @foreach (var test in Model.PageContent)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(test.TestName, "ChooseTestMode", new { testId = test.Id })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => test.DateOfCreation, new { @class = "col-md-2 control-label" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<p>
+    @Html.ActionLink("See all tests", "Index", "Client")
+</p>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { pageNumber = x }))
+</div>
+

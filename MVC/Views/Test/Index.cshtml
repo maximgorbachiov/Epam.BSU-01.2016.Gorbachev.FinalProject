@@ -1,0 +1,80 @@
+﻿@using MVC.Helpers
+@using MVC.Models.Pagging
+@model  PageViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<hr/>
+<div class="row">
+    @using (Html.BeginForm("SearchByTestName", "Test", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(m => Model.SearchingToken, new { @class = "col-lg-2 control-label" })
+                <div class="col-lg-10">
+                    @Html.TextBoxFor(m => Model.SearchingToken, new { @class = "form-control" })
+                </div>
+            </div>
+           
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <input type="submit" value="Search" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<hr />
+<h4>
+    @Html.ActionLink("Create test", "Create")
+</h4>
+
+
+<div class="row">
+    @if (Model != null)
+    {
+        if (Model.PageContent != null)
+        {
+            <div class="col-lg-2">
+                @{ Html.RenderAction("GetCategories", "Test"); }
+                @Html.ActionLink("See all tests", "Index", "Test")
+            </div>
+            <div class="col-lg-10">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>
+                                @Html.Label("Test name")
+                            </th>
+                            <th>
+                                @Html.Label("Edit")
+                            </th>
+                            <th>
+                                @Html.Label("Delete")
+                            </th>
+                        </tr>              
+                        @foreach (var item in Model.PageContent)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TestName)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { pageNumber = x }))
+</div>

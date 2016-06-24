@@ -1,0 +1,24 @@
+﻿@model MVC.Models.Shared.ProfileViewModel
+
+<h2>About</h2>
+
+<h3>
+    @Html.LabelFor(m => m.Name, new { @class = "col-md-4 control-label" })
+    @Html.DisplayFor(m => m.Name, new { @class = "form-control col-md-8" })
+</h3>
+<h3>
+    @Html.LabelFor(m => m.Surname, new { @class = "col-md-4 control-label" })
+    @Html.DisplayFor(m => m.Surname, new { @class = "form-control col-md-8" })
+</h3>
+<h3>
+    @Html.LabelFor(m => m.Patronymic, new { @class = "col-md-4 control-label" })
+    @Html.DisplayFor(m => m.Patronymic, new { @class = "form-control col-md-8" })
+</h3>
+<h3>
+    @Html.LabelFor(m => m.Age, new { @class = "col-md-4 control-label" })
+    @Html.DisplayFor(m => m.Age, new { @class = "form-control col-md-8" })
+</h3>
+
+<div class="col-md-10">
+    @Html.ActionLink("Back", "Index", "Client")
+</div>

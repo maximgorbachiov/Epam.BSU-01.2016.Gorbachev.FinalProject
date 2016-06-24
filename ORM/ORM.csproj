@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{86F6805A-F606-4D89-A468-9432A5809E1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ORM</RootNamespace>
+    <AssemblyName>ORM</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Answer.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="EntityModelContext.cs" />
+    <Compile Include="Migrations\201606181006209_AddedPassedTests.cs" />
+    <Compile Include="Migrations\201606181006209_AddedPassedTests.Designer.cs">
+      <DependentUpon>201606181006209_AddedPassedTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181906264_DateOfPassAddedToPassedTest.cs" />
+    <Compile Include="Migrations\201606181906264_DateOfPassAddedToPassedTest.Designer.cs">
+      <DependentUpon>201606181906264_DateOfPassAddedToPassedTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606181951349_Change_Type_Of_Fields_TimeToPass_And_DateOfPass.cs" />
+    <Compile Include="Migrations\201606181951349_Change_Type_Of_Fields_TimeToPass_And_DateOfPass.Designer.cs">
+      <DependentUpon>201606181951349_Change_Type_Of_Fields_TimeToPass_And_DateOfPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606192146312_Change_Type_To_DateTime_In_TimeToPass_And_DateOfPass_In_PassedTest.cs" />
+    <Compile Include="Migrations\201606192146312_Change_Type_To_DateTime_In_TimeToPass_And_DateOfPass_In_PassedTest.Designer.cs">
+      <DependentUpon>201606192146312_Change_Type_To_DateTime_In_TimeToPass_And_DateOfPass_In_PassedTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606220031380_Added_DateOfCreate_Field_To_Test.cs" />
+    <Compile Include="Migrations\201606220031380_Added_DateOfCreate_Field_To_Test.Designer.cs">
+      <DependentUpon>201606220031380_Added_DateOfCreate_Field_To_Test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221233153_Change_Type_Of_TimeToPass_Field_In_PassedTest.cs" />
+    <Compile Include="Migrations\201606221233153_Change_Type_Of_TimeToPass_Field_In_PassedTest.Designer.cs">
+      <DependentUpon>201606221233153_Change_Type_Of_TimeToPass_Field_In_PassedTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606221327491_Change_Type_Of_RightAnswer_Field_In_Question.cs" />
+    <Compile Include="Migrations\201606221327491_Change_Type_Of_RightAnswer_Field_In_Question.Designer.cs">
+      <DependentUpon>201606221327491_Change_Type_Of_RightAnswer_Field_In_Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606222020312_Add_Image_To_Question.cs" />
+    <Compile Include="Migrations\201606222020312_Add_Image_To_Question.Designer.cs">
+      <DependentUpon>201606222020312_Add_Image_To_Question.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PassedTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606181006209_AddedPassedTests.resx">
+      <DependentUpon>201606181006209_AddedPassedTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181906264_DateOfPassAddedToPassedTest.resx">
+      <DependentUpon>201606181906264_DateOfPassAddedToPassedTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606181951349_Change_Type_Of_Fields_TimeToPass_And_DateOfPass.resx">
+      <DependentUpon>201606181951349_Change_Type_Of_Fields_TimeToPass_And_DateOfPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606192146312_Change_Type_To_DateTime_In_TimeToPass_And_DateOfPass_In_PassedTest.resx">
+      <DependentUpon>201606192146312_Change_Type_To_DateTime_In_TimeToPass_And_DateOfPass_In_PassedTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606220031380_Added_DateOfCreate_Field_To_Test.resx">
+      <DependentUpon>201606220031380_Added_DateOfCreate_Field_To_Test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221233153_Change_Type_Of_TimeToPass_Field_In_PassedTest.resx">
+      <DependentUpon>201606221233153_Change_Type_Of_TimeToPass_Field_In_PassedTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606221327491_Change_Type_Of_RightAnswer_Field_In_Question.resx">
+      <DependentUpon>201606221327491_Change_Type_Of_RightAnswer_Field_In_Question.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606222020312_Add_Image_To_Question.resx">
+      <DependentUpon>201606222020312_Add_Image_To_Question.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

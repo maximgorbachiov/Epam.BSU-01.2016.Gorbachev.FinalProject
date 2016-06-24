@@ -1,0 +1,62 @@
+﻿@using MVC.Models.Admin
+@model AddQuestionViewModel
+
+@{
+    ViewBag.Title = "Add questions";
+}
+
+<h2>@ViewBag.Title</h2>
+<h5>
+    <a href="@Url.Action("CreateQuestion", "Test", Model)">Add question to test</a> |
+    <a href="@Url.Action("Index", "Test", Model)">Go to all tests</a>
+</h5>
+<hr />
+
+
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="lead control-label">
+                Question text
+            </label>
+        </div>
+        <div class="col-md-6">
+            <label class="lead control-label">
+                Image
+            </label>
+        </div>
+    </div>
+
+    @foreach (var item in Model.AddedQuestions)
+    {
+        <div class="form-group">
+            <div class="col-md-6">
+                @Html.DisplayFor(modelItem => item.Text, new { @class = "form-control" })
+            </div>
+            @if (item.Image != null)
+            {
+                <div class="col-md-6">
+                    <img style="width:80px; height:60px;" src="data:image/jpeg;base64,@Convert.ToBase64String(item.Image)" />)
+                </div>
+            }
+        </div>
+    }
+    <br />
+
+    @for (int i = 0; i < Model.AddedQuestions.Count; i++)
+    {
+        <div class="form-group">
+            <div class="col-md-2">
+                <label class="control-label">
+                    test number @i
+                </label>
+            </div>
+            <div class="col-md-10">
+                <label class="control-label">
+                    @Model.AddedQuestions[i].Text
+                </label>
+            </div>
+        </div>
+        <br />
+    }
+</div>

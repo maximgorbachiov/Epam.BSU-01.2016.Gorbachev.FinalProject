@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MVC.Models.Shared.CategoryViewModel>
+
+<table>
+
+    @if (Model != null)
+    {
+        foreach (var category in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(category.CategoryName, "ViewCategory", new { categoryId = category.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

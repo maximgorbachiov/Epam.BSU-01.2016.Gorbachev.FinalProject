@@ -1,0 +1,25 @@
+﻿@model MVC.Models.Shared.QuestionViewModel
+
+@{
+    ViewBag.Title = "Delete question";
+}
+
+<h2>Test delete</h2>
+<h5>@Html.ActionLink("Back to question's list", "Edit", Model.TestId)</h5>
+<hr />
+
+<div></div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => Model.TestId)
+
+    <div class="form-group lead">
+        Are you sure you want to delete test with name <b>@Html.DisplayFor(model => model.QuestionText)</b>?
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </div>
+}
+

@@ -1,0 +1,18 @@
+﻿@model MVC.Models.Shared.CategoryViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Test delete</h2>
+<div>Are you sure you want to delete test with name <b>@Html.DisplayFor(model => model.CategoryName)</b>?</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </p>
+    <p>
+        @Html.ActionLink("Back to categories's list", "Index")
+    </p>
+}

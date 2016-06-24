@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MVC.Models.Shared.TestViewModel>
+
+@{
+    ViewBag.Title = "Index Admin";
+}
+
+<h2>Admin functions</h2>
+
+<p>
+    @Html.ActionLink("Tests", "Index", "Test")
+    @Html.ActionLink("Categories", "Index", "Category")
+    @Html.ActionLink("Clients", "Index", "Client")
+    @Html.ActionLink("Roles", "Index", "Role")
+</p>
+
+
