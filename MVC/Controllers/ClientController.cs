@@ -168,6 +168,8 @@ namespace MVC.Controllers
 
             if (tests == null) return HttpNotFound();
 
+            tests = tests.OrderByDescending(test => test.DateOfCreation).ToList();
+
             var page = new PageViewModel
             {
                 PageInfo = new PageInfoModel
@@ -194,7 +196,9 @@ namespace MVC.Controllers
             foreach (var passedTest in passedTests)
             {
                 passedTest.TestName = testService.GetTestEntity(passedTest.TestId).TestName;
+                passedTest.CountOfQuestions = questionService.GetQuestionEntitiesByTestId(passedTest.TestId).Count();
             }
+            passedTests = passedTests.OrderByDescending(test => test.DateOfPass).ToList();
 
             var page = new PageViewModel
             {

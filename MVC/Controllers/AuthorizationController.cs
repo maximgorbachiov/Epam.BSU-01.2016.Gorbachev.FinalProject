@@ -43,7 +43,7 @@ namespace MVC.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Client");
                     }
                 }
                 else
@@ -73,12 +73,6 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel viewModel)
         {
-            /*if (viewModel.Captcha != (string)Session[CaptchaImage.CaptchaValueKey])
-            {
-                ModelState.AddModelError("Captcha", "Incorrect input.");
-                return View(viewModel);
-            }*/
-
             var anyUser = service.GetAllClientEntities().Any(u => u.Email == viewModel.Email);
 
             if (anyUser)
@@ -94,7 +88,7 @@ namespace MVC.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(viewModel.Email, false);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Client");
                 }
                 else
                 {

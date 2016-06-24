@@ -76,9 +76,6 @@
 <p>
     @Html.ActionLink("See all passed tests", "ViewStatistic", "Client")
 </p>
-<p>
-    @Html.ActionLink("Back", "Index", "Client")
-</p>
 <div class="btn-group">
     @Html.PageLinks(Model.PageInfo, x => Url.Action("ViewStatistic", new { pageNumber = x }))
 </div>
